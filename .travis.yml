@@ -13,15 +13,14 @@ stages:
   - name: release
     if: ((branch = master AND type = push) OR (tag IS present)) AND NOT fork
 
-
 jobs:
   include:
     - name: test 2.12
       scala: 2.12.9
       script: sbt ++$TRAVIS_SCALA_VERSION test
-    -
-      name: mima
-      script: sbt +mimaReportBinaryIssues
+    # -
+    #   name: mima
+    #   script: sbt +mimaReportBinaryIssues
     -
       name: docs
       scala: 2.12.9
