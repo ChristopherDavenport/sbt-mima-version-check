@@ -6,7 +6,7 @@ import sbt._
 import com.typesafe.tools.mima.plugin._
 import MimaKeys._
 
-object MimaVersionCheck extends AutoPlugin {
+object MimaVersionCheckPlugin extends AutoPlugin {
 
   object autoImport extends MimaVersionCheckKeys
   import autoImport._
