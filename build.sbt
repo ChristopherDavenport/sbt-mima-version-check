@@ -9,7 +9,12 @@ lazy val core = project.in(file("core"))
   .settings(
     name := "sbt-mima-version-check",
     sbtPlugin := true,
-    addSbtPlugin("com.typesafe" % "sbt-mima-plugin" % "0.6.0")
+    addSbtPlugin("com.typesafe" % "sbt-mima-plugin" % "0.6.0"),
+
+    scriptedLaunchOpts := { scriptedLaunchOpts.value ++
+      Seq("-Xmx1024M", "-Dplugin.version=" + version.value)
+    },
+    scriptedBufferLog := false
   )
 
 lazy val docs = project.in(file("docs"))
