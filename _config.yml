@@ -1,0 +1,11 @@
+name: sbt-mima-version-check
+baseurl: /sbt-mima-version-check
+description: Plugin to Automate which Mima Versions to Check
+highlighter: rouge
+docs: true
+collections:
+  tut:
+    output: true
+version: 0.0.1
+org: io.chrisdavenport
+markdown: kramdown
