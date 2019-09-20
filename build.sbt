@@ -9,7 +9,7 @@ lazy val core = project.in(file("core"))
   .settings(
     name := "sbt-mima-version-check",
     sbtPlugin := true,
-    addSbtPlugin("com.typesafe" % "sbt-mima-plugin" % "0.6.0"),
+    addSbtPlugin("com.typesafe" % "sbt-mima-plugin" % "0.6.1"),
 
     scriptedLaunchOpts := { scriptedLaunchOpts.value ++
       Seq("-Xmx1024M", "-Dplugin.version=" + version.value)
@@ -32,7 +32,7 @@ lazy val contributors = Seq(
 // General Settings
 lazy val commonSettings = Seq(
   organization := "io.chrisdavenport",
-  scalaVersion := "2.12.9",
+  scalaVersion := "2.12.10",
 
   scalacOptions in (Compile, doc) ++= Seq(
       "-groups",
