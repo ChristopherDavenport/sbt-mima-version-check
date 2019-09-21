@@ -6,7 +6,9 @@
 
 To use sbt-mima-version-check in an existing SBT project with version 1.0 or greater, add the following dependencies to your plugins.sbt depending on your needs:
 
+```scala
 addSbtPlugin("io.chrisdavenport" % "sbt-mima-version-check" % "<version>")
+```
 
 ## Explanation
 
