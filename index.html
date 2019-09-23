@@ -2,12 +2,9 @@
 
 <h2 id="quick-start">Quick Start</h2>
 
-<p>To use sbt-mima-version-check in an existing SBT project with Scala 2.11 or a later version, add the following dependencies to your
-<code class="highlighter-rouge">build.sbt</code> depending on your needs:</p>
+<p>To use sbt-mima-version-check in an existing SBT project with version 1.0 or greater, add the following dependencies to your plugins.sbt depending on your needs:</p>
 
-<div class="language-scala highlighter-rouge"><pre class="highlight"><code><span class="n">libraryDependencies</span> <span class="o">++=</span> <span class="nc">Seq</span><span class="o">(</span>
-  <span class="s">"io.chrisdavenport"</span> <span class="o">%%</span> <span class="s">"sbt-mima-version-check"</span> <span class="o">%</span> <span class="s">"&lt;version&gt;"</span>
-<span class="o">)</span>
+<div class="language-scala highlighter-rouge"><pre class="highlight"><code><span class="n">addSbtPlugin</span><span class="o">(</span><span class="s">"io.chrisdavenport"</span> <span class="o">%</span> <span class="s">"sbt-mima-version-check"</span> <span class="o">%</span> <span class="s">"&lt;version&gt;"</span><span class="o">)</span>
 </code></pre>
 </div>
 
