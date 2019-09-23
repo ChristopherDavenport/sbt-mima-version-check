@@ -14,7 +14,11 @@ lazy val core = project.in(file("core"))
     scriptedLaunchOpts := { scriptedLaunchOpts.value ++
       Seq("-Xmx1024M", "-Dplugin.version=" + version.value)
     },
-    scriptedBufferLog := false
+    scriptedBufferLog := false,
+    test := {
+      (Test / test).value
+      scripted.toTask("").value
+    }
   )
 
 lazy val docs = project.in(file("docs"))
@@ -121,3 +125,5 @@ lazy val skipOnPublishSettings = Seq(
   publishArtifact := false,
   publishTo := None
 )
+
+
