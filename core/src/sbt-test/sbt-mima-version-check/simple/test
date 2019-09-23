@@ -7,3 +7,5 @@
 > majorZeroPatch/check
 > majorMinorZero/check
 > majorMinorPatch/check
+
+> sbtPluginModule/check

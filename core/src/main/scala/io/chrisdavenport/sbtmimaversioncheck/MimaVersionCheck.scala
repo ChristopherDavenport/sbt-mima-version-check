@@ -56,7 +56,11 @@ object MimaVersionCheck extends AutoPlugin {
     mimaPreviousArtifacts := (mimaVersions(version.value) ++ mimaVersionCheckExtraVersions.value)
       .filterNot(mimaVersionCheckExcludedVersions.value.contains(_))
       .map{v => 
-        val moduleN = moduleName.value + "_" + scalaBinaryVersion.value.toString
+        val moduleN = if (sbtPlugin.value){
+          moduleName.value + "_" + scalaBinaryVersion.value.toString + "_" + sbtBinaryVersion.value.toString
+        } else {
+          moduleName.value + "_" + scalaBinaryVersion.value.toString
+        }
         organization.value % moduleN % v
       }
   )

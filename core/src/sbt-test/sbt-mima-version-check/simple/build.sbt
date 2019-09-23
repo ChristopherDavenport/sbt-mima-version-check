@@ -97,6 +97,23 @@ lazy val majorMinorPatch = project.in(file("majorMinorPatch"))
     }
   )
 
+lazy val sbtPluginModule = project.in(file("sbtPluginModule"))
+  .settings(
+    version := "2.2.3",
+    sbtPlugin := true,
+    organization := "bar",
+    name := "foo",
+    TaskKey[Unit]("check") := {
+      val moduleName = mimaPreviousArtifacts
+        .value
+        .head
+        .name
+      val expected = "foo_2.13_1.0"
+      if (moduleName == expected) ()
+      else throw new Throwable(s"Module name incorrect - got $moduleName - expected $expected")
+    }
+  )
+
 import sbt.librarymanagement.ModuleID
 
 def testVersion(versionTested: String, expected: Set[String], mimaPrevArtifacts: Set[ModuleID]) = {
