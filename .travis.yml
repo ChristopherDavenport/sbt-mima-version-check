@@ -4,6 +4,8 @@ language: scala
 jdk:
   - openjdk11
 
+scala_version_212: &scala_version_212 "2.12.10"
+
 before_install:
   - git fetch --tags
   - export PATH=${PATH}:./vendor/bundle
@@ -12,18 +14,18 @@ stages:
   - name: test
   - name: release
     if: ((branch = master AND type = push) OR (tag IS present)) AND NOT fork
-
+    
 jobs:
   include:
     - name: test 2.12
-      scala: 2.12.9
+      scala: *scala_version_212
       script: sbt ++$TRAVIS_SCALA_VERSION test
     # -
     #   name: mima
     #   script: sbt +mimaReportBinaryIssues
     -
       name: docs
-      scala: 2.12.9
+      scala: *scala_version_212
       install:
         - rvm use 2.6.0 --install --fuzzy
         - gem update --system
@@ -37,7 +39,7 @@ jobs:
         - sbt ci-release
     - stage: release
       name: microsite
-      scala: 2.12.9
+      scala: *scala_version_212
       install:
         - rvm use 2.6.0 --install --fuzzy
         - gem update --system
@@ -49,4 +51,5 @@ cache:
   directories:
     - $HOME/.ivy2/cache
     - $HOME/.coursier/cache
+    - $HOME/.cache
     - $HOME/.sbt
