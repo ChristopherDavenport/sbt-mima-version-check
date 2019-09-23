@@ -38,7 +38,7 @@ object MimaVersionCheckPlugin extends AutoPlugin {
   }
   
   def mimaVersions(version: String): Set[String] = VersionNumber(version) match {
-    case VersionNumber(Seq(major, minor, patch, _*), _, _) if patch.toInt > 0 =>
+    case VersionNumber(Seq(major, minor, patch, _*), _, _) =>
       semverBinCompatVersions(major.toInt, minor.toInt, patch.toInt)
         .map{case (maj, min, pat) => maj.toString + "." + min.toString + "." + pat.toString}
     case _ =>

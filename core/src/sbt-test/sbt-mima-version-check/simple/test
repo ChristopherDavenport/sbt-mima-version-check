@@ -1,2 +1,9 @@
 # Test versions are expected on project
-> check
+> zeroZeroZero/check
+> zeroZeroPatch/check
+> zeroMinorZero/check
+> zeroMinorPatch/check
+> majorZeroZero/check
+> majorZeroPatch/check
+> majorMinorZero/check
+> majorMinorPatch/check
