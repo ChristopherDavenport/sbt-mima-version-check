@@ -8,4 +8,5 @@
 > majorMinorZero/check
 > majorMinorPatch/check
 
-> sbtPluginModule/check
+> sbtPluginModuleName/check
+> normalProjectModuleName/check

@@ -97,7 +97,7 @@ lazy val majorMinorPatch = project.in(file("majorMinorPatch"))
     }
   )
 
-lazy val sbtPluginModule = project.in(file("sbtPluginModule"))
+lazy val sbtPluginModuleName = project.in(file("sbtPluginModule"))
   .settings(
     version := "2.2.3",
     sbtPlugin := true,
@@ -109,6 +109,22 @@ lazy val sbtPluginModule = project.in(file("sbtPluginModule"))
         .head
         .name
       val expected = "foo_2.13_1.0"
+      if (moduleName == expected) ()
+      else throw new Throwable(s"Module name incorrect - got $moduleName - expected $expected")
+    }
+  )
+
+lazy val normalProjectModuleName = project.in(file("normalProjectModuleName"))
+  .settings(
+    version := "2.2.3",
+    organization := "bar",
+    name := "foo",
+    TaskKey[Unit]("check") := {
+      val moduleName = mimaPreviousArtifacts
+        .value
+        .head
+        .name
+      val expected = "foo_2.13"
       if (moduleName == expected) ()
       else throw new Throwable(s"Module name incorrect - got $moduleName - expected $expected")
     }
