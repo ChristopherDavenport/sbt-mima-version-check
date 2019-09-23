@@ -1,6 +1,7 @@
 lazy val `sbt-mima-version-check` = project.in(file("."))
   .disablePlugins(MimaPlugin)
-  .settings(commonSettings, releaseSettings, skipOnPublishSettings)
+  .enablePlugins(NoPublishPlugin)
+  .settings(commonSettings, releaseSettings)
   .aggregate(core, docs)
 
 lazy val core = project.in(file("core"))
@@ -23,10 +24,11 @@ lazy val core = project.in(file("core"))
 
 lazy val docs = project.in(file("docs"))
   .disablePlugins(MimaPlugin)
-  .settings(commonSettings, skipOnPublishSettings, micrositeSettings)
-  .dependsOn(core)
   .enablePlugins(MicrositesPlugin)
   .enablePlugins(TutPlugin)
+  .enablePlugins(NoPublishPlugin)
+  .settings(commonSettings, micrositeSettings)
+  .dependsOn(core)
 
 lazy val contributors = Seq(
   "ChristopherDavenport" -> "Christopher Davenport"
@@ -57,9 +59,7 @@ lazy val releaseSettings = {
     homepage := Some(url("https://github.com/ChristopherDavenport/sbt-mima-version-check")),
     licenses += ("MIT", url("http://opensource.org/licenses/MIT")),
     publishMavenStyle := true,
-    pomIncludeRepository := { _ =>
-      false
-    },
+    pomIncludeRepository := { _ => false },
     pomExtra := {
       <developers>
         {for ((username, name) <- contributors) yield
@@ -117,13 +117,5 @@ lazy val micrositeSettings = {
     )
   )
 }
-
-lazy val skipOnPublishSettings = Seq(
-  skip in publish := true,
-  publish := (()),
-  publishLocal := (()),
-  publishArtifact := false,
-  publishTo := None
-)
 
 
