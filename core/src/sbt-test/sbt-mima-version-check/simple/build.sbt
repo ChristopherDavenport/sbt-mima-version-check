@@ -97,6 +97,33 @@ lazy val majorMinorPatch = project.in(file("majorMinorPatch"))
     }
   )
 
+lazy val majorMinorPatchSnapshot = project.in(file("majorMinorPatchSnapshot"))
+  .settings(
+    version := "3.0.2-SNAPSHOT",
+
+    TaskKey[Unit]("check") := {
+      val expected: Set[String] = Set(
+        "3.0.0",
+        "3.0.1"
+      )
+      testVersion(version.value, expected, mimaPreviousArtifacts.value)
+    }
+  )
+
+lazy val majorMinorPatchSnapshotUsesLatestReleasedVersion = project.in(file("majorMinorPatchSnapshotUsesLatestReleasedVersion"))
+  .settings(
+    version := "3.0.1+65-4fb25ad8+20201219-1448-SNAPSHOT",
+    mimaVersionCheckSnapshotUsesLatestReleasedVersion := true,
+
+    TaskKey[Unit]("check") := {
+      val expected: Set[String] = Set(
+        "3.0.0",
+        "3.0.1"
+      )
+      testVersion(version.value, expected, mimaPreviousArtifacts.value)
+    }
+  )
+
 lazy val sbtPluginModuleName = project.in(file("sbtPluginModule"))
   .settings(
     version := "2.2.3",
