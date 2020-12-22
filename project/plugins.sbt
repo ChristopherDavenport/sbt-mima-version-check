@@ -7,4 +7,4 @@ addSbtPlugin("io.chrisdavenport" % "sbt-mima-version-check" % "0.1.2")
 addSbtPlugin("io.chrisdavenport" % "sbt-no-publish" % "0.1.0")
 
 // Here For The Free Version Bumps for the Library
-addSbtPlugin("com.typesafe" % "sbt-mima-plugin" % "0.6.1")
+addSbtPlugin("com.typesafe" % "sbt-mima-plugin" % "0.6.4")
