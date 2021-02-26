@@ -69,7 +69,7 @@ lazy val docs = project.in(file("docs"))
   .dependsOn(core)
 
 inThisBuild(List(
-  scalaVersion := "2.12.10",
+  scalaVersion := "2.12.13",
 
   organization := "io.chrisdavenport",
   scalacOptions in (Compile, doc) ++= Seq(
