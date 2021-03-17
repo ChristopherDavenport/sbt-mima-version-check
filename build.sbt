@@ -56,7 +56,7 @@ lazy val docs = project.in(file("docs"))
         "-Ywarn-unused:imports",
         "-Xlint:-missing-interpolator,_"
       ),
-      libraryDependencies += "com.47deg" %% "github4s" % "0.27.1",
+      libraryDependencies += "com.47deg" %% "github4s" % "0.28.3",
       micrositePushSiteWith := GitHub4s,
       micrositeGithubToken := sys.env.get("GITHUB_TOKEN"),
       micrositeExtraMdFiles := Map(
