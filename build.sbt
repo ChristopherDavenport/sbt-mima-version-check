@@ -22,7 +22,7 @@ lazy val core = project.in(file("core"))
 lazy val docs = project.in(file("docs"))
   .disablePlugins(MimaPlugin)
   .enablePlugins(MicrositesPlugin)
-  .enablePlugins(TutPlugin)
+  .enablePlugins(MdocPlugin)
   .enablePlugins(NoPublishPlugin)
   .settings{
     import microsites._
@@ -47,8 +47,7 @@ lazy val docs = project.in(file("docs"))
         "gray-lighter" -> "#F4F3F4",
         "white-color" -> "#FFFFFF"
       ),
-      fork in tut := true,
-      scalacOptions in Tut --= Seq(
+      Compile / scalacOptions --= Seq(
         "-Xfatal-warnings",
         "-Ywarn-unused-import",
         "-Ywarn-numeric-widen",
