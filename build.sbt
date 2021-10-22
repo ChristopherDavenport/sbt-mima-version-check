@@ -7,7 +7,7 @@ lazy val core = project.in(file("core"))
   .enablePlugins(SbtPlugin)
   .settings(
     name := "sbt-mima-version-check",
-    addSbtPlugin("com.typesafe" % "sbt-mima-plugin" % "0.9.2"),
+    addSbtPlugin("com.typesafe" % "sbt-mima-plugin" % "1.0.1"),
 
     scriptedLaunchOpts := { scriptedLaunchOpts.value ++
       Seq("-Xmx1024M", "-Dplugin.version=" + version.value)
